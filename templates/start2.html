@@ -1,0 +1,206 @@
+
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>智慧养老系统</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+     <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/static/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/assets/css/admin.css">
+    <link rel="stylesheet" href="/static/assets/css/app.css">
+</head>
+
+<body data-type="generalComponents">
+
+
+    <header class="am-topbar am-topbar-inverse admin-header">
+        <div class="am-topbar-brand">
+{#            <a href="javascript:;" class="tpl-logo">#}
+{#                <img src="/static/assets/img/logo.png" alt="">#}
+{#            </a>#}
+            <h2 color = "#6495ED">智慧养老系统</h2>
+        </div>
+        <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
+
+        </div>
+
+
+
+        <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+            <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
+
+
+            </ul>
+        </div>
+    </header>
+
+
+
+
+
+
+
+    <div class="tpl-page-container tpl-page-header-fixed">
+
+{#        左侧导航栏#}
+        <div class="tpl-left-nav tpl-left-nav-hover">
+            <div class="tpl-left-nav-title">
+                功能列表
+            </div>
+            <div class="tpl-left-nav-list">
+                <ul class="tpl-left-nav-menu">
+                    <li class="tpl-left-nav-item">
+                        <a href="/teacher_index" class="nav-link">
+                            <i class="am-icon-home"></i>
+                            <span>系统首页</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/guanliban" class="nav-link ">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>老年人信息管理</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/jxjh" class="nav-link tpl-left-nav-link-list active">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>工作人员信息管理</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/paike_js" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>义工信息管理</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/xscj" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>数据管理</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/xslb" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>摄像头管理</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+{#        左侧导航栏#}
+
+        <div class="tpl-content-wrapper">
+
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                   <h1 align="left">录入义工信息</h1>
+
+
+
+                </div>
+                <div class="tpl-block">
+                   <form method="post" action="/addvolunInfo">
+                       <fieldset>
+                    <div class="input-group">
+                        <label class="fl">姓名：</label>
+                        <input  type="text" name="xingming" id="xingming" class="fl j-num" value="{{ username }}"style= "background-color:#F5F5F5;border:0;" placeholder=""/>
+                        <span>&nbsp;</span>
+                        <div class="clear"></div>
+                     </div>
+                       <div class="input-group">
+                        <laabel class="fl">年龄：</laabel>
+                        <input  type="text" name="age" id="age" class="fl j-num"  value="{{ age }}" style= "background-color:#F5F5F5;border:0;" placeholder=""/>
+                        <span>&nbsp;</span>
+                        <div class="clear"></div>
+                     </div>
+                    <div class="input-group ">
+                        <label class="fl">性别：</label>
+                            <input  name = "sex" id="sex" value = "男"  type = "radio"   checked = "checked" > 男
+                           <input  name = "sex"  id="sex" value = "女"  type = "radio" > 女
+
+                        <span>&nbsp;</span>
+                        <div class="clear"></div>
+                     </div>
+                    <div class="input-group">
+                        <label class="fl">手机号：</label>
+                        <input  type="text" name="phone" id="phone" value="{{ phone }}"class="fl j-num" style= "background-color:#F5F5F5;border:0;" placeholder=""/>
+                        <span>&nbsp;</span>
+                        <div class="clear"></div>
+                     </div>
+                    <div class="input-group">
+                        <label class="fl">身份证号：</label>
+                        <input  type="text" name="credit_id" id="credit_id"value="{{ id_card}}"class="fl j-num" style= "background-color:#F5F5F5;border:0;" placeholder=""/>
+                        <span>&nbsp;</span>
+                        <div class="clear"></div>
+                     </div>
+                     <div class="input-group">
+                        <label class="fl">出生日期：</label>
+                       <input name="birthday" id="birthday" value="{{birthday }}"type="date"/>
+                         <span>&nbsp;</span>
+                        <div class="clear"></div>
+                     </div>
+
+                     <div class="input-group">
+                        <label class="fl">人脸采集：</label>
+                         <button type="submit">点击采集</button>
+{#                        <a href="/collectFace">#}
+{#                          <button type="button">点击采集</button>#}
+{##}
+{#                        </a>#}
+
+                         <a style="">{{ flag }}</a>
+                        <span>&nbsp;</span>
+                        <div class="clear"></div>
+                     </div>
+
+                           </fieldset>
+                   </form>
+                    <a href="/addVolunImage"><button type="button">确认录入</button></a>
+
+
+
+
+
+
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tpl-alert"></div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+  <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/amazeui.min.js"></script>
+    <script src="/static/assets/js/app.js"></script>
+</body>
+
+</html>

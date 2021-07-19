@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>智慧养老系统</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+     <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/static/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/assets/css/admin.css">
+    <link rel="stylesheet" href="/static/assets/css/app.css">
+    <style type="text/css">
+#myInput {
+    background-image: url('https://static.runoob.com/images/mix/searchicon.png'); /* 搜索按钮 */
+    background-position: 10px 12px; /* 定位搜索按钮 */
+    background-repeat: no-repeat; /* 不重复图片 */
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+
+#myTable {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+    font-size: 10px;
+}
+
+#myTable th, #myTable td {
+    text-align: left;
+    padding: 12px;
+}
+
+#myTable tr {
+    /* 表格添加边框 */
+    border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+    /* 表头及鼠标移动过 tr 时添加背景 */
+    background-color: #f1f1f1;
+}
+</style>
+
+    <title>Title</title>
+</head>
+
+<body data-type="generalComponents">
+
+    <header class="am-topbar am-topbar-inverse admin-header">
+        <div class="am-topbar-brand">
+          <h2 color = "#6495ED">智慧养老系统</h2>
+        </div>
+        <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
+
+        </div>
+
+
+
+        <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+            <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
+
+
+            </ul>
+        </div>
+    </header>
+
+
+
+
+
+
+
+    <div class="tpl-page-container tpl-page-header-fixed">
+
+
+        <div class="tpl-left-nav tpl-left-nav-hover">
+            <div class="tpl-left-nav-title">
+                功能列表
+            </div>
+            <div class="tpl-left-nav-list">
+                <ul class="tpl-left-nav-menu">
+                   <li class="tpl-left-nav-item">
+                        <a href="/teacher_index" class="nav-link">
+                            <i class="am-icon-home"></i>
+                            <span>系统首页</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/data" class="nav-link">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>数据统计</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/jxjh" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>项目申报</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/paike_js" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>年度评分</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/xscj" class="nav-link tpl-left-nav-link-list active">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>出访活动查看</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/xslb" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>出访信息服务</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="tpl-content-wrapper">
+
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="搜索...">
+
+    <table id="myTable">
+    <tr class="header">
+        <th style="width:5%;">出访年份</th>
+        <th style="width:5%;">出访评分</th>
+        <th style="width:10%;">出访人</th>
+        <th style="width:10%;">出访单位</th>
+        <th style="width:15%;">邀请人</th>
+        <th style="width:20%;">邀请单位</th>
+        <th style="width:20%;">活动主题学科</th>
+         <th style="width:30%;">操作</th>
+    </tr>
+    <tr>
+        <td onclick="">2017</td>
+        <td onclick="" style="color:#FF4500">87</td>
+        <td>李怀凇</td>
+        <td>北交大软件学院</td>
+        <td>Ann Liphasis</td>
+        <td>Harvard University</td>
+        <td>Computer-science</td>
+
+        <td><div>
+            <button style="border:1px white none;background-color: #7ED321;width: 76px;height: 36px;color: #FFFFFF" >评价详情</button>
+
+            <button type="button" style="border:1px white none;background-color: #7B68EE;width: 86px;height: 36px;color: #FFFFFF">相关学者推荐</button>
+        </div></td>
+    </tr>
+    <tr>
+         <td onclick="">2015</td>
+        <td onclick="" style="color:#FF4500">92</td>
+        <td>李怀凇</td>
+        <td>北交大软件学院</td>
+        <td>Ajonason Appavo</td>
+        <td>Boston University</td>
+        <td>Computer-science</td>
+
+        <td><div>
+            <a href="/pjxq"><button type="button" style="border:1px white none;background-color: #7ED321;width: 76px;height: 36px;color: #FFFFFF">评价详情</button></a>
+
+            <a href="/rec"><button type="button" style="border:1px white none;background-color: #7B68EE;width: 86px;height: 36px;color: #FFFFFF">相关学者推荐</button></a>
+        </div></td>
+    </tr>
+</table>
+                </div>
+                <div class="tpl-block">
+
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tpl-alert"></div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+  <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/amazeui.min.js"></script>
+    <script src="/static/assets/js/app.js"></script>
+</body>
+
+{#<body>#}
+
+{#</body>#}
+</html>

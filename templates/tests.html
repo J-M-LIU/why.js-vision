@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<button onclick="window.location.href='{{url_for("testing")}}'">hahhh</button>-->
+<button onclick="set_choice()">hhhhh</button>
+</body>
+<script>
+    function set_choice(){
+        var turnForm = document.createElement("form");
+        turnForm.style.display="none"
+        turnForm.method ='post';
+        // 请求地址
+        turnForm.action = '/testing';
+        // 创建表单元素，用来存储值，传递给后台。这里创建的隐藏域。
+        var newElement = document.createElement("input");
+        choice="1"
+        newElement.name="choice"
+        newElement.value="1"
+        // 设置Name属性
+        // 将创造的隐藏域添加到Form中
+        turnForm.appendChild(newElement);
+        document.body.appendChild(turnForm);
+        // 提交表单
+        turnForm.submit();
+        document.body.removeChild(turnForm);
+    }
+</script>
+</html>

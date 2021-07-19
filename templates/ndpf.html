@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta charset="utf-8">
+    <title>智慧养老系统</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+     <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/static/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/assets/css/admin.css">
+    <link rel="stylesheet" href="/static/assets/css/app.css">
+
+    <link href="https://cdn.bootcss.com/leaflet/1.5.1/leaflet.css" rel="stylesheet">
+        <script src="https://cdn.bootcss.com/leaflet/1.5.1/leaflet.js"></script>
+        <style>
+            #mapid,body {
+                margin: 0;
+                padding: 0;
+                border: none;
+            }
+            #mapid {
+                height: 100vh;
+                width: 100vw;
+            }
+            #label {
+                position: absolute;
+                top: 110px;
+                left: 30px;
+                width: 120px;
+                z-index: 10000;
+                background: #03A9F4;
+                padding: 5px;
+            }
+            .label {
+                width: 100%;
+                height: 30px;
+            }
+            .label-color {
+                width: 20px;height: 20px;background: #800026;display: inline-block;float:left;
+            }
+        </style>
+  <style>
+* {
+margin: 0;
+padding: 0;
+}
+ul, ol {
+list-style: none;
+}
+body {
+font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande",
+sans-serif;
+}
+        .tab-head {
+margin-left: 120px;
+margin-bottom: 10px;
+}
+        .tab-content {
+clear: left;
+display: none;
+}
+h2 {
+border-bottom: solid #02aaf1 2px;
+width: 200px;
+height: 25px;
+margin: 0;
+float: left;
+text-align: center;
+font-size: 16px;
+}
+        .selected {
+color: #FFFFFF;
+background-color: #02aaf1;
+}
+        .show {
+clear: left;
+display: block;
+}
+        .hidden {
+display: none;
+}
+        .new-btn-login-sp {
+padding: 1px;
+display: inline-block;
+width: 75%;
+}
+        .new-btn-login {
+background-color: #02aaf1;
+color: #FFFFFF;
+font-weight: bold;
+border: none;
+width: 100%;
+height: 30px;
+border-radius: 5px;
+font-size: 16px;
+}
+#main {
+width: 100%;
+margin: 0 auto;
+font-size: 14px;
+}
+
+        .red-star {
+color: #f00;
+width: 10px;
+display: inline-block;
+}
+        .null-star {
+color: #fff;
+}
+        .content {
+margin-top: 5px;
+}
+        .content dt {
+width: 100px;
+display: inline-block;
+float: left;
+margin-left: 20px;
+color: #666;
+font-size: 13px;
+margin-top: 8px;
+}
+        .content dd {
+margin-left: 120px;
+margin-bottom: 5px;
+}
+        .content dd input {
+width: 85%;
+height: 28px;
+border: 0;
+-webkit-border-radius: 0;
+-webkit-appearance: none;
+}
+#foot {
+margin-top: 10px;
+position: absolute;
+bottom: 15px;
+width: 100%;
+}
+        .foot-ul {
+width: 100%;
+}
+        .foot-ul li {
+width: 100%;
+text-align: center;
+color: #666;
+}
+        .note-help {
+color: #999999;
+font-size: 12px;
+line-height: 130%;
+margin-top: 5px;
+width: 100%;
+display: block;
+}
+#btn-dd {
+margin: 20px;
+text-align: center;
+}
+        .foot-ul {
+width: 100%;
+}
+        .one_line {
+display: block;
+height: 1px;
+border: 0;
+border-top: 1px solid #eeeeee;
+width: 100%;
+margin-left: 20px;
+}
+        .am-header {
+display: -webkit-box;
+display: -ms-flexbox;
+display: box;
+width: 100%;
+position: relative;
+padding: 7px 0;
+-webkit-box-sizing: border-box;
+-ms-box-sizing: border-box;
+box-sizing: border-box;
+background: #1D222D;
+height: 50px;
+text-align: center;
+-webkit-box-pack: center;
+-ms-flex-pack: center;
+box-pack: center;
+-webkit-box-align: center;
+-ms-flex-align: center;
+box-align: center;
+}
+        .am-header h1 {
+-webkit-box-flex: 1;
+-ms-flex: 1;
+box-flex: 1;
+line-height: 18px;
+text-align: center;
+font-size: 18px;
+font-weight: 300;
+color: #fff;
+}
+</style>
+           <meta charset="utf-8"><link rel="icon" href="https://jscdn.com.cn/highcharts/images/favicon.ico">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+         <script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+        <script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+			<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat/dist/ecStat.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/dataTool.min.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/china.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/map/js/world.js"></script>
+       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts/dist/extension/bmap.min.js"></script>
+     <meta charset="utf-8"><link rel="icon" href="https://jscdn.com.cn/highcharts/images/favicon.ico">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            /* css 代码  */
+        </style>
+        <script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+        <script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+        <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+     <script src="https://code.highcharts.com.cn/highcharts/modules/series-label.js"></script>
+        <script src="https://code.highcharts.com.cn/highcharts/modules/oldie.js"></script>
+        <script src="https://code.highcharts.com.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+        <script src="https://code.highcharts.com.cn/highcharts/modules/oldie.js"></script>
+        <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+    <title>Title</title>
+</head>
+
+<body data-type="generalComponents">
+
+    <header class="am-topbar am-topbar-inverse admin-header">
+        <div class="am-topbar-brand">
+          <h2 color = "#6495ED">智慧养老系统</h2>
+        </div>
+        <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
+
+        </div>
+
+
+
+        <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+            <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
+
+
+            </ul>
+        </div>
+    </header>
+
+
+
+
+
+
+
+    <div class="tpl-page-container tpl-page-header-fixed">
+
+
+        <div class="tpl-left-nav tpl-left-nav-hover">
+            <div class="tpl-left-nav-title">
+                功能列表
+            </div>
+            <div class="tpl-left-nav-list">
+                <ul class="tpl-left-nav-menu">
+                   <li class="tpl-left-nav-item">
+                        <a href="/teacher_index" class="nav-link">
+                            <i class="am-icon-home"></i>
+                            <span>系统首页</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/data" class="nav-link">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>数据统计</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/jxjh" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>项目申报</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/paike_js" class="nav-link tpl-left-nav-link-list active">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>年度评分</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/xscj" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>出访活动查看</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/xslb" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>出访信息服务</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="tpl-content-wrapper">
+
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+      <div id="main">
+    <div id="tabhead" class="tab-head">
+        <h2 id="tab1" class="selected" name="tab">学校综合评分统计</h2>
+        <h2 id="tab2"  name="tab">学院综合评分统计</h2>
+
+    </div>
+    <form name=alipayment action="" method=post>
+        <div id="body1" class="show" name="divcontent">
+            <dl class="content">
+             <div id="container" style="max-width:800px;height:400px"></div>
+        <script>
+            var chart = Highcharts.chart('container', {
+	title: {
+		text: '学校历年综合评分统计图'
+	},
+	yAxis: {
+		title: {
+			text: '分数'
+		}
+	},
+	legend: {
+		layout: 'vertical',
+		align: 'right',
+		verticalAlign: 'middle'
+	},
+	plotOptions: {
+		series: {
+			label: {
+				connectorAllowed: false
+			},
+			pointStart: 2010
+		}
+	},
+	series: [{
+		name: '学校平均分',
+		data: [66, 70, 75, 77, 84,82, 80,88]
+	}, {
+		name: '该年学院平均最高分',
+		data: [80, 84,88, 94, 90, 93, 92, 93]
+	}, {
+		name: '该年学院平均最低分',
+		data: [60, 63, 67, 68,70, 73, 78, 78]
+	}],
+	responsive: {
+		rules: [{
+			condition: {
+				maxWidth: 500
+			},
+			chartOptions: {
+				legend: {
+					layout: 'horizontal',
+					align: 'center',
+					verticalAlign: 'bottom'
+				}
+			}
+		}]
+	}
+});
+        </script>
+            </dl>
+        </div>
+    </form>
+    <form name=alipayment action="" method=post>
+        <div id="body2"  class="tab-content" name="divcontent" style="height: 100%" >
+            <dl class="content">
+
+<select>
+  <option value="volvo">2010</option>
+  <option value="volvo">2011</option>
+  <option value="saab">2012</option>
+  <option value="opel">2013</option>
+  <option value="audi">2014</option>
+  <option value="volvo">2015</option>
+  <option value="saab">2016</option>
+  <option value="opel">2017</option>
+  <option value="audi" selected="">2018</option>
+  <option value="audi">2019</option>
+</select>
+              <div id="container1" style="min-width:400px;height:400px"></div>
+        <script>
+            var chart = Highcharts.chart('container1', {
+	chart: {
+		type: 'bar'
+	},
+	title: {
+		text: '该年各学院综合评分统计'
+	},
+	xAxis: {
+		categories: ['软件学院', '计算机与信息技术学院', '电子信息工程学院', '经济管理学院', '交通运输学院','土木建筑工程学院', '机械与电子控制工程学院', '电气工程学院', '理学院', '马克思主义学院', '语言与传播学院', '建筑与艺术学院', '法学院'],
+		title: {
+			text: null
+		}
+	},
+	yAxis: {
+		min: 0,
+		title: {
+			text: '该学院该年平局分',
+			align: 'high'
+		},
+		labels: {
+			overflow: 'justify'
+		}
+	},
+	tooltip: {
+		valueSuffix: ' 百万'
+	},
+	plotOptions: {
+		bar: {
+			dataLabels: {
+				enabled: true,
+				allowOverlap: true // 允许数据标签重叠
+			}
+		}
+	},
+	legend: {
+		layout: 'vertical',
+		align: 'right',
+		verticalAlign: 'top',
+		x: -40,
+		y: 100,
+		floating: true,
+		borderWidth: 1,
+		backgroundColor: ((Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'),
+		shadow: true
+	},
+	series: [{
+		name: '2018 年',
+		data: [85, 91, 78,82,84,88,83,81,75,90,89,85,88]
+	}]
+});
+        </script>
+            </dl>
+        </div>
+    </form>
+          <form name=alipayment action="" method=post>
+        <div id="body3"  class="tab-content" name="divcontent">
+            <dl class="content">
+
+<select>
+  <option value="volvo">2010</option>
+  <option value="volvo">2011</option>
+  <option value="saab">2012</option>
+  <option value="opel">2013</option>
+  <option value="audi">2014</option>
+  <option value="volvo">2015</option>
+  <option value="saab">2016</option>
+  <option value="opel">2017</option>
+  <option value="audi">2018</option>
+  <option value="audi">2019</option>
+</select>
+
+                  <div id="container2" style="min-width:400px;height:400px"></div>
+        <script>
+            // Build the chart
+Highcharts.chart('container2', {
+	chart: {
+		plotBackgroundColor: null,
+		plotBorderWidth: null,
+		plotShadow: false,
+		type: 'pie'
+	},
+	title: {
+		text: '该年出访单位情况'
+	},
+	tooltip: {
+		pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+	},
+	plotOptions: {
+		pie: {
+			allowPointSelect: true,
+			cursor: 'pointer',
+			dataLabels: {
+				enabled: false
+			},
+			showInLegend: true
+		}
+	},
+	series: [{
+		name: 'Brands',
+		colorByPoint: true,
+		data: [{
+			name: '哈佛大学',
+			y: 22,
+			sliced: true,
+			selected: true
+		}, {
+			name: '麻省理工',
+			y: 11
+		}, {
+			name: '芝加哥大学',
+			y: 10
+		}, {
+			name: '哥伦比亚大学',
+			y: 4
+		}, {
+			name: '牛津大学',
+			y: 4
+		}, {
+			name: '剑桥大学',
+			y: 7
+		}]
+	}]
+});
+        </script>
+            </dl>
+        </div>
+    </form>
+</div>
+
+                </div>
+                <div class="tpl-block">
+
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tpl-alert"></div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+  <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/amazeui.min.js"></script>
+    <script src="/static/assets/js/app.js"></script>
+</body>
+<script language="javascript">
+var tabs = document.getElementsByName('tab');
+var contents = document.getElementsByName('divcontent');
+len = 4;
+(function changeTab(tab) {
+for(var i = 0, len = tabs.length; i < len; i++) {
+            tabs[i].onmouseover = showTab;
+}
+    })();
+function showTab() {
+for(var i = 0, len = tabs.length; i < len; i++) {
+if(tabs[i] === this) {
+                tabs[i].className = 'selected';
+contents[i].className = 'show';
+} else {
+                tabs[i].className = '';
+contents[i].className = 'tab-content';
+}
+        }
+    }
+</script>
+</html>

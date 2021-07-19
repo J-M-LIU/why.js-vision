@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>国际交流管理系统</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+     <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/static/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/assets/css/admin.css">
+    <link rel="stylesheet" href="/static/assets/css/app.css">
+    <script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+        <script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+    <title>Title</title>
+    <script type="text/javascript">
+        function MM_jumpMenu(targ, selObj, restore) {
+    eval(targ + ".location='" +selObj.value + "'");
+};
+    </script>
+</head>
+
+<body data-type="generalComponents">
+
+    <header class="am-topbar am-topbar-inverse admin-header">
+        <div class="am-topbar-brand">
+          <h2 color = "#6495ED">国际交流管理系统</h2>
+        </div>
+        <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
+
+        </div>
+
+
+
+        <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+            <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
+
+
+            </ul>
+        </div>
+    </header>
+
+
+
+
+
+
+
+    <div class="tpl-page-container tpl-page-header-fixed">
+
+
+        <div class="tpl-left-nav tpl-left-nav-hover">
+            <div class="tpl-left-nav-title">
+                功能列表
+            </div>
+            <div class="tpl-left-nav-list">
+                <ul class="tpl-left-nav-menu">
+                   <li class="tpl-left-nav-item">
+                        <a href="/teacher_index" class="nav-link">
+                            <i class="am-icon-home"></i>
+                            <span>系统首页</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/data" class="nav-link">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>数据统计</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/jxjh" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>项目申报</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/paike_js" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>年度评分</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/xscj" class="nav-link tpl-left-nav-link-list active">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>出访活动查看</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/xslb" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>出访信息服务</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="tpl-content-wrapper">
+
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+                <h2>评价详情</h2>
+                 <select class="form-control" onchange="location.href = this.options[this.selectedIndex].value">
+					  <option value="/pjxq" >受邀人</option>
+                        <option value="/pjxq2" >受邀单位</option>
+                      <option value="/pjxq3" selected="">邀请人</option>
+                      <option value="/pjxq4" >邀请单位</option>
+					</select>
+
+                <div id="container" style="min-width:400px;height:400px"></div>
+        <script>
+            var chart = Highcharts.chart('container', {
+	chart: {
+		spacing : [40, 0 , 40, 0]
+	},
+	title: {
+		floating:true,
+		text: 'Ann Liphasis 91'
+	},
+	tooltip: {
+		pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+	},
+	plotOptions: {
+		pie: {
+			allowPointSelect: true,
+			cursor: 'pointer',
+			dataLabels: {
+				enabled: true,
+				format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+				style: {
+					color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+				}
+			},
+			point: {
+				events: {
+					mouseOver: function(e) {  // 鼠标滑过时动态更新标题
+						// 标题更新函数，API 地址：https://api.hcharts.cn/highcharts#Chart.setTitle
+					}
+					//,
+					// click: function(e) { // 同样的可以在点击事件里处理
+					//     chart.setTitle({
+					//         text: e.point.name+ '\t'+ e.point.y + ' %'
+					//     });
+					// }
+				}
+			},
+		}
+	},
+	series: [{
+		type: 'pie',
+		innerSize: '80%',
+		name: '评分优势',
+		data: [
+			{name:'Citation',   y: 15.0, url : 'http://bbs.hcharts.cn'},
+			['Papers',       15.8],
+			{
+				name: 'Acitivity',
+				y: 12.8,
+				sliced: true,
+				selected: true,
+				url: 'http://www.hcharts.cn'
+			},
+			['Diversity',    8.5],
+			['Social',     8.2],
+			['G-index',   15.7],
+			['H-index',  17.7]
+		]
+	}]
+}, function(c) { // 图表初始化完毕后的会掉函数
+	// 环形图圆心
+	var centerY = c.series[0].center[1],
+		titleHeight = parseInt(c.title.styles.fontSize);
+	// 动态设置标题位置
+	c.setTitle({
+		y:centerY + titleHeight/2
+	});
+});
+        </script>
+                 
+                                              
+              </select>
+
+                </div>
+                <div class="tpl-block">
+
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tpl-alert"></div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+  <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/amazeui.min.js"></script>
+    <script src="/static/assets/js/app.js"></script>
+</body>
+
+{#<body>#}
+
+{#</body>#}
+</html>

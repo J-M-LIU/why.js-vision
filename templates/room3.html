@@ -1,0 +1,13 @@
+  <h1>房间摄像头-采集人脸信息</h1>
+  <img id="video" src="{{ url_for('video_viewer5') }}">
+  <form class="am-form" method="post" action="/goback3">
+  <input name="username" id="username"value="{{ username }}" type="text" style="display:none">
+  <input name="gender" id="gender"value="{{ gender }}" type="text" style="display:none">
+  <input name="age" id="age"value="{{ age }}" type="text" style="display:none">
+  <input name="phone" id="phone"value="{{ phone }}" type="text" style="display:none">
+  <input name="id_card" id="id_card"value="{{ id_card }}" type="text" style="display:none">
+  <input name="birthday" id="birthday"value="{{ birthday }}" type="text" style="display:none">
+  <input name="EmployId" id="EmployId" value="{{ EmployId }}" type="text" style="display:none">
+  <input name="type" id="type" value="{{ type }}" type="text" style="display:none">
+      <button type="submit">确认采集</button>
+  </form>

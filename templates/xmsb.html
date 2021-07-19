@@ -1,0 +1,267 @@
+<!doctype html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>国际交流管理系统</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/static/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/assets/css/admin.css">
+    <link rel="stylesheet" href="/static/assets/css/app.css">
+     <style type="text/css">
+             /*reset*/
+            *{
+                margin:0;
+                padding:0;
+            }
+textCenter{
+    text-align:center;
+    }
+   div.outer:hover{
+        box-shadow: 0px 0px 20px 1px #888888;
+   }
+
+    div.outer{
+            width: 250px;
+            height: 340px;
+            padding: 2px 2px;
+            margin: 10px;
+            border: 1px solid rgba(198,198,198,1.0);
+            border-bottom: 2px solid rgba(198,198,198,1.0);
+            background: white;
+            border-radius: 5px;
+            float: left;
+    }
+    div.inner{
+            padding: 10px 20px 10px 20px;
+            border: dashed 1px rgba(188,188,188,1.0);
+            height: 330px;
+    }
+    div.middle{
+            border: solid 1px rgba(231,231,231,1.0);
+    }
+</style>
+    <script src="jquery-1.8.3.min.js"></script>
+<style type="text/css">
+	*{margin:0;padding:0;}
+	ol, ul {list-style: none;}
+	blockquote,q {quotes: none;}
+	a{text-decoration:none;color:#2d2f30;-webkit-transition: all .3s linear;-moz-transition: all .3s linear;-o-transition: all .3s linear;-ms-transition: all .3s linear;transition: all .3s linear;}
+	a:focus{ outline:none;}
+	.content{margin:auto;width:1200px;}
+	.sx_updown{width:100%;border-top:1px solid #f2f2f2;background:#fff;overflow:hidden;padding:32px 0 40px 0;z-index:9999;position:absolute;left:0;top:60px;text-align:left;}
+	.updown_box{float:left;min-height:198px;width:388px;border-left:1px solid #f2f2f2;padding:0 50px;-webkit-box-sizing: content-box;-moz-box-sizing: content-box; box-sizing: content-box;}
+	.updown_box h3{font-size:16px;margin-bottom:18px;padding-left:10px;}
+	.updown_box ul li{float:left;margin:0 10px 10px 10px;}
+	.updown_box ul li a{display:block;font-size:14px;padding:6px 8px;line-height:18px;}
+	.updown_box ul li.selected a{background:#7ecbc8;color:#fff;}
+	.w136{width:136px;border-left:0;padding:0;}
+	.w290{width:290px;}
+	.w160{width:160px;padding:0 40px;}
+	.sousuo{padding:10px 0 36px 0;width:100%;}
+	.select-result{width:900px;float:left;}
+	.select-result ul li a{height:30px;padding:0 24px 0 10px;line-height:30px;display:block;position:relative;float:left;margin:0 10px 10px 0;color:#fff;font-size:14px;background:url(close1.png) 90% center no-repeat #7ecbc8;}
+
+</style>
+</head>
+
+<body data-type="generalComponents">
+
+
+    <header class="am-topbar am-topbar-inverse admin-header">
+        <div class="am-topbar-brand">
+           <h2 color = "#6495ED">国际交流管理系统</h2>
+        </div>
+        <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
+
+        </div>
+
+
+
+        <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+            <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
+
+
+            </ul>
+        </div>
+    </header>
+
+
+
+
+
+
+
+    <div class="tpl-page-container tpl-page-header-fixed">
+
+
+        <div class="tpl-left-nav tpl-left-nav-hover">
+            <div class="tpl-left-nav-title">
+                功能列表
+            </div>
+            <div class="tpl-left-nav-list">
+                <ul class="tpl-left-nav-menu">
+                    <li class="tpl-left-nav-item">
+                        <a href="/teacher_index" class="nav-link">
+                            <i class="am-icon-home"></i>
+                            <span>系统首页</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/guanliban" class="nav-link">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>数据统计</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/jxjh" class="nav-link tpl-left-nav-link-list active">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>项目申报</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/paike_js" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>年度评分</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/xscj" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>出访活动查看</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/xslb" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>出访信息服务</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="tpl-content-wrapper">
+
+            <div class="tpl-portlet-components">
+  <div id="content">
+			 <div class="outer">
+       <div class="col-lg-8  offset-lg-2">
+            <h3 class="mt-5">Live Streaming</h3>
+            <img src="{{ url_for('video_feed') }}" width="100%">
+        </div>
+     </div>
+      	 <div class="outer">
+       <div class="col-lg-8  offset-lg-2">
+            <h3 class="mt-5">Live Streaming</h3>
+            <img src="{{ url_for('video_feed1') }}" width="100%">
+        </div>
+     </div>
+      <div class="outer">
+        <div class="middle">
+         <div class="inner">
+              <div>
+                 <img src ="/static/assets/img/xgdx.jpg" width="200" height="150"/>
+             </div>
+            <h3>交流财经类项目</h3>
+            <p>负责学校:美国犹他大学</p>
+             <p style=" text-align:center;">推荐级数:<font color="bule">高</font></p>
+         </div>
+        </div>
+     </div>
+     <div class="outer">
+        <div class="middle">
+         <div class="inner">
+             <div>
+                 <img src ="/static/assets/img/hav.jpg" width="200" height="150"/>
+             </div>
+            <h3>法律项目交流</h3>
+            <p>负责学校:哈佛大学</p>
+            <p style=" text-align:center;">推荐级数:<font color="bule">中</font></p>
+         </div>
+        </div>
+     </div>
+     <div class="outer">
+        <div class="middle">
+         <div class="inner">
+              <div>
+                 <img src ="/static/assets/img/niujin.jpg" width="200" height="150"/>
+             </div>
+            <h3>本-硕-博研修项目</h3>
+            <p>美国加州大学洛杉矶分校</p>
+             <p style=" text-align:center;">推荐级数:<font color="bule">低</font></p>
+         </div>
+        </div>
+         <div align="right">
+			<button class="prev" >上一页</button>
+			<button class="btn">1</button>
+			<button class="next" >下一页</button>
+		</div>
+     </div>
+
+                </div>
+ </div>
+                <div class="portlet-title">
+                    <div class="caption font-green bold">
+                        <span class="am-icon-code"></span>
+                    </div>
+                    <div class="tpl-portlet-input tpl-fz-ml">
+                        <div class="portlet-input input-small input-inline">
+                            <div class="input-icon right">
+                                <!-- <i class="am-icon-search"></i> -->
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="tpl-block">
+
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+                            <form class="am-form">
+                                <table class="am-table am-table-striped am-table-hover table-main">
+
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+
+                                <hr>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tpl-alert"></div>
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+
+
+    <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/amazeui.min.js"></script>
+    <script src="/static/assets/js/app.js"></script>
+</body>
+
+</html>

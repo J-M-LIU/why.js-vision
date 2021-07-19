@@ -1,0 +1,437 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>智慧养老系统</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+     <link rel="icon" type="image/png" href="assets/i/favicon.png">
+    <link rel="apple-touch-icon-precomposed" href="/static/assets/i/app-icon72x72@2x.png">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="/static/assets/css/amazeui.min.css" />
+    <link rel="stylesheet" href="/static/assets/css/admin.css">
+    <link rel="stylesheet" href="/static/assets/css/app.css">
+    <script>
+	alert({{u}});
+</script>
+</head>
+
+<body data-type="generalComponents">
+
+
+    <header class="am-topbar am-topbar-inverse admin-header">
+        <div class="am-topbar-brand">
+{#            <a href="javascript:;" class="tpl-logo">#}
+{#                <img src="/static/assets/img/logo.png" alt="">#}
+{#            </a>#}
+            <h2 color = "#6495ED">智慧养老系统</h2>
+        </div>
+        <div class="am-icon-list tpl-header-nav-hover-ico am-fl am-margin-right">
+
+        </div>
+
+
+
+        <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+
+            <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list tpl-header-list">
+
+
+            </ul>
+        </div>
+    </header>
+
+
+
+
+
+
+
+    <div class="tpl-page-container tpl-page-header-fixed">
+
+{#        左侧导航栏#}
+        <div class="tpl-left-nav tpl-left-nav-hover">
+            <div class="tpl-left-nav-title">
+                功能列表
+            </div>
+            <div class="tpl-left-nav-list">
+                <ul class="tpl-left-nav-menu">
+                    <li class="tpl-left-nav-item">
+                        <a href="/teacher_index" class="nav-link">
+                            <i class="am-icon-home"></i>
+                            <span>系统首页</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/guanliban" class="nav-link active">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>老年人信息管理</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/jxjh" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>工作人员信息管理</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/paike_js" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>义工信息管理</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/xscj" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>数据管理</span>
+                        </a>
+                    </li>
+                    <li class="tpl-left-nav-item">
+                        <a href="/xslb" class="nav-link tpl-left-nav-link-list">
+                            <i class="am-icon-bar-chart"></i>
+                            <span>摄像头管理</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+{#        左侧导航栏#}
+
+        <div class="tpl-content-wrapper">
+
+            <div class="tpl-portlet-components">
+                <div class="portlet-title">
+
+                <form method="post" action="/queryoldFuzzy">
+                    <input name="searchOld" id="searchOld" style="border-radius:5px;
+outline:none;
+border-top-style: groove;
+border-right-style: groove;
+border-bottom-style: groove;
+border-left-style: groove;
+border:1px solid #a1a1a1;;" class="form-control-solid" placeholder="搜索老人姓名...">
+                     <button type="submit" onclick="" style="background-color:#98AFC7;border:#98AFC7;border-radius: 4em;width:100px;height:30px;font-size: 14px;color: #FFFFFF">搜索</button>
+                </form>
+<br>
+                    <a href="/collectOldInfo">
+                    <button type="button" onclick="" style="background-color:#98AFC7;border:#98AFC7;border-radius: 4em;width:100px;height:30px;font-size: 14px;color: #FFFFFF">录入老人信息</button>
+                    </a>
+                    <table class="am-table am-table-striped am-table-hover table-main">
+{##}
+                                <thead>
+                                     <tr>
+                                        <th class="table-title">姓名</th>
+                                        <th class="table-title">性别</th>
+                                         <th class="table-title">年龄</th>
+                                        <th class="table-type">电话</th>
+                                        <th class="table-author am-hide-sm-only">身份证号</th>
+                                        <th class="table-date am-hide-sm-only">出生日期</th>
+                                        <th class="table-date am-hide-sm-only">第一监护人姓名</th>
+                                        <th class="table-date am-hide-sm-only">第一监护人关系</th>
+                                        <th class="table-date am-hide-sm-only">第一监护人联系方式</th>
+                                        <th class="table-date am-hide-sm-only">操作</th>
+
+                                    </tr>
+                                    </thead>
+
+                                        <tbody id="adminBody">
+
+                                               {% for i in u %}
+                                                    <tr>
+                                                        <td>{{ i[3] }}</td>
+                                                        <td>{{ i[4] }}</td>
+                                                        <td>{{ i[29] }}</td>
+                                                        <td>{{ i[5] }}</td>
+                                                        <td>{{ i[6] }}</td>
+                                                        <td>{{ i[7] }}</td>
+                                                        <td>{{ i[13] }}</td>
+                                                        <td>{{ i[14] }}</td>
+                                                        <td>{{ i[15] }}</td>
+                                                    <td>
+
+                                                        <a href="/deleteold/{{ i[0] }}"><input type="button" value="删除老人" style="background-color: #218cd3;color: #FFFFFF"></a>
+                                                        <a href="/gomodifyOldInfo/{{ i[0] }}/{{ i[3] }}/{{ i[4] }}/{{ i[29] }}/{{ i[5] }}/{{ i[6] }}/{{ i[7] }}/
+                                                                                        {{ i[13] }}/{{ i[14] }}/{{ i[15] }}">
+                                                            <input type="button" value="修改信息" style="background-color: #218cd3;color: #FFFFFF">
+                                                        </a>
+                                                    </td>
+                                                    </tr>
+                                                 {% endfor %}
+
+                                        </tbody>
+                                </table>
+
+                </div>
+                <div class="tpl-block">
+
+                    <div class="am-g">
+                        <div class="am-u-sm-12">
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tpl-alert"></div>
+            </div>
+
+
+
+
+
+
+        </div>
+
+    </div>
+
+
+  <script src="/static/assets/js/jquery.min.js"></script>
+    <script src="/static/assets/js/amazeui.min.js"></script>
+    <script src="/static/assets/js/app.js"></script>
+</body>
+
+<script>
+    let users = [{
+        userId: 1,
+        userName: '11',
+        likeName: '11',
+        heading: './images/1.jpg',
+
+    },
+        {
+            userId: 2,
+            userName: '22',
+            likeName: '22',
+            heading: './images/2.jpg',
+
+        },
+        {
+            userId: 3,
+            userName: '33',
+            likeName: '33',
+            heading: './images/3.jpg',
+
+        },
+        {
+            userId: 4,
+            userName: '44',
+            likeName: '44',
+            heading: './images/1.jpg',
+
+        },
+        {
+            userId: 5,
+            userName: '55',
+            likeName: '55',
+            heading: './images/2.jpg',
+
+        },
+        {
+            userId: 6,
+            userName: '66',
+            likeName: '66',
+            heading: './images/3.jpg',
+
+        },
+        {
+            userId: 7,
+            userName: '77',
+            likeName: '77',
+            heading: './images/1.jpg',
+
+        },
+        {
+            userId: 8,
+            userName: '88',
+            likeName: '88',
+            heading: './images/2.jpg',
+
+        },
+        {
+            userId: 9,
+            userName: '99',
+            likeName: '99',
+            heading: './images/3.jpg',
+
+        },
+        {
+            userId: 10,
+            userName: '1010',
+            likeName: '1010',
+            heading: './images/1.jpg',
+
+        },
+        {
+            userId: 11,
+            userName: '1111',
+            likeName: '1111',
+            heading: './images/2.jpg',
+        },
+        {
+            userId: 12,
+            userName: '1212',
+            likeName: '1212',
+            heading: './images/3.jpg',
+
+        },
+        {
+            userId: 13,
+            userName: '1313',
+            likeName: '1313',
+            heading: './images/1.jpg',
+
+        },
+        {
+            userId: 14,
+            userName: '1414',
+            likeName: '1414',
+            heading: './images/2.jpg',
+        },
+        {
+            userId: 15,
+            userName: '1515',
+            likeName: '1515',
+            heading: './images/1.jpg',
+
+        },
+        {
+            userId: 16,
+            userName: '1616',
+            likeName: '1616',
+            heading: './images/2.jpg',
+        },
+        {
+            userId: 17,
+            userName: '1717',
+            likeName: '1717',
+            heading: './images/2.jpg',
+
+        },
+        {
+            userId: 18,
+            userName: '1818',
+            likeName: '1818',
+            heading: './images/3.jpg',
+
+        },
+        {
+            userId: 19,
+            userName: '1919',
+            likeName: '1919',
+            heading: './images/1.jpg',
+
+        },
+        {
+            userId: 20,
+            userName: '2020',
+            likeName: '2020',
+            heading: './images/2.jpg',
+
+        },
+        {
+            userId: 21,
+            userName: '2121',
+            likeName: '2121',
+            heading: './images/3.jpg',
+
+        },
+        {
+            userId: 22,
+            userName: '2222',
+            likeName: '2222',
+            heading: './images/1.jpg',
+
+        },
+        {
+            userId: 23,
+            userName: '2323',
+            likeName: '2323',
+            heading: './images/2.jpg',
+
+        },
+        {
+            userId: 24,
+            userName: '2424',
+            likeName: '2424',
+            heading: './images/3.jpg',
+
+        },
+        {
+            userId: 25,
+            userName: '2525',
+            likeName: '2525',
+            heading: './images/1.jpg',
+
+        },
+        {
+            userId: 26,
+            userName: '2626',
+            likeName: '2626',
+            heading: './images/2.jpg',
+        },
+        {
+            userId: 27,
+            userName: '2727',
+            likeName: '2727',
+            heading: './images/3.jpg',
+
+        },
+        {
+            userId: 28,
+            userName: '2828',
+            likeName: '2828',
+            heading: './images/1.jpg',
+
+        }
+    ];
+
+    var total = user.length;
+
+    var pageSizes = 5;
+    var currentPages = 1;
+    var other = total % pageSizes == 0 ? 0 : 1;
+    var allPage = parseInt(total / pageSizes) + other;
+    page(pageSizes, currentPages, user);
+    if (currentPages <= allPage) {
+        setInterval(() => {
+            $("#adminBody").html("");
+
+            page(pageSizes, currentPages, user);
+            //currentPages++;
+        }, 3000)
+    }
+    // 参数：
+    // pageSize：一页的总数
+    // currentPage：当前的页数
+    // skipNum：跳过的数量
+    // arr：数组
+    // 返回值：
+    // newArr分页后的数组
+    function page(pageSize, currentPage, arr) {
+        var skipNum = (currentPage - 1) * pageSize;
+        var newArr = (skipNum + pageSize >= arr.length) ? arr.slice(skipNum, arr.length) : arr.slice(skipNum, skipNum + pageSize);
+        console.log("newArr", newArr);
+        console.log("currentPage", currentPage);
+        var tbody = document.getElementById("adminBody");
+        var str='';
+        for (var i = 0; i < newArr.length; i++) {
+            str+='<tr>';
+            let newArrI=newArr[i];
+            for(let j in newArrI){
+                   if(j=="heading"){
+                   }else{
+                    str+='<td>'+newArrI[j]+'</td>';
+                   }
+            }
+            str+='</tr>';
+        }
+        $("#adminBody").html(str);
+        currentPages = currentPage == allPage ? 1 : currentPage + 1;
+        console.log("currentPages", currentPages);
+    }
+</script>
+</html>
