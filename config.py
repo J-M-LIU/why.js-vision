@@ -9,11 +9,11 @@ MAX_CONTENT_LENGTH = 16 * 1024 * 1024
 # mysql配置
 DIALECT = "mysql"
 DRIVER = "pymysql"
-USERNAME = "root"
-PASSWORD = "Stz123456"
-HOST = "bj-cynosdbmysql-grp-94ctk06s.sql.tencentcdb.com"
+USERNAME = ""
+PASSWORD = ""
+HOST = ""
 # HOST="localhost"
-PORT = "21171"
+PORT = ""
 # PORT="3306"
 AUTOCOMMIT=True
 DATABASE = "careOld"

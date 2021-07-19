@@ -10,8 +10,8 @@ class volunteer:
     def connect_mysql(self):
         global cursor
         global db
-        db = pymysql.connect(host='bj-cynosdbmysql-grp-94ctk06s.sql.tencentcdb.com', port=21171, user='root',
-                             password='Stz123456', database='careOld')
+        db = pymysql.connect(host='bj-com', port=, user='root',
+                             password='', database='careOld')
         cursor = db.cursor()
 
     def addInfo(self, name, gender, age, phone, id_card, birthday, CREATEBY):

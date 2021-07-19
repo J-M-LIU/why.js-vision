@@ -9,8 +9,8 @@ class user:
     def connect_mysql(self):
         global cursor
         global db
-        db = pymysql.connect(host='bj-cynosdbmysql-grp-94ctk06s.sql.tencentcdb.com', port=21171, user='root',
-                             password='Stz123456', database='careOld')
+        db = pymysql.connect(host='bj--grp-94ctk06s.sql.tencentcdb.com', port=, user='root',
+                             password='', database='careOld')
         cursor = db.cursor()
 
     def login(self, userName, password):
